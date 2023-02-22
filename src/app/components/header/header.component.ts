@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 
 @Component({
   selector: 'app-header',
@@ -8,5 +8,9 @@ import { Component } from '@angular/core';
 export class HeaderComponent {
 
   title: string = 'My Task List';
+
+  toggleAddTask() {
+    console.log("toggleAddTask");
+  }
 
 }
