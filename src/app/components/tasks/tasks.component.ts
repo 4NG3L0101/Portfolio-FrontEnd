@@ -1,14 +1,25 @@
-import { Component } from '@angular/core';
-import {Task} from '../../Task';
-import {TASKS} from '../../mock-tasks';
+import { Component, OnInit } from '@angular/core';
+import { TaskService } from '../../service/task.service';
+import {Task} from '../../Task'
 
 @Component({
   selector: 'app-tasks',
   templateUrl: './tasks.component.html',
   styleUrls: ['./tasks.component.css']
 })
-export class TasksComponent {
+export class TasksComponent implements OnInit {
 
-  task : Task[] = TASKS;
+  tasks: Task[] = [];
+
+  constructor (private taskService: TaskService) {
+
+  }
+
+  ngOnInit(): void {
+
+    //Like Promise
+    this.taskService.getTasks().subscribe((tasks)=>(this.tasks = tasks));
+
+  }
 
 }
